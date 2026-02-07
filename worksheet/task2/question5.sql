@@ -2,11 +2,12 @@
 -- Expected Columns:
 -- StudentId, FirstName, LastName, TotalCreditsPassed
 SELECT S.StudentId, S.FirstName, S.LastName, 
+    COALESCE(
     (
         SELECT SUM(C.Credits)
         FROM Enrolment E, Course C
         WHERE E.CourseId = C.CourseId
         AND E.StudentId = S.StudentId
         AND E.Grade >= 40
-    ) AS TotalCreditsPassed
+    ), 0) AS TotalCreditsPassed
 FROM Student S

@@ -4,4 +4,4 @@
 SELECT StudentId, FirstName, LastName, DateOfBirth
 FROM Student
 ORDER BY DateOfBirth DESC
-LIMT 5
+LIMIT 5
